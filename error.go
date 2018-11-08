@@ -18,4 +18,6 @@ var (
 	ErrTokenUsedTooEarly = errors.New("Token used too early")
 
 	ErrTokenUsedTooLate = errors.New("Token used too late")
+
+	ErrInvalidDomain = errors.New("Invalid domain in token")
 )

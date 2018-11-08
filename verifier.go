@@ -16,12 +16,14 @@ var (
 	}
 )
 
-type Verifier struct{}
+type Verifier struct {
+	Domain string
+}
 
 func (v *Verifier) VerifyIDToken(idToken string, audience []string) error {
 	certs, err := getFederatedSignonCerts()
 	if err != nil {
 		return err
 	}
-	return VerifySignedJWTWithCerts(idToken, certs, audience, Issuers, MaxTokenLifetime)
+	return VerifySignedJWTWithCerts(idToken, certs, audience, Issuers, MaxTokenLifetime, v.Domain)
 }
